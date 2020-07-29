@@ -15,3 +15,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::post('/category', [CategoryController::class, 'store']);
+Route::put('/category/{category}', [CategoryController::class, 'update']);

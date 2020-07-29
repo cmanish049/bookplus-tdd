@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -42,11 +43,13 @@ class CategoryManagementTest extends TestCase
         ], ['Accept' => 'application/json']);
 
         $response->assertStatus(201);
+        $category = Category::first();
 
-        $response = $this->json('PUT', '/api/category', [
+        $response = $this->json('PUT', '/api/category/'. $category->id, [
             'title' => 'New Awesome Category'
         ], ['Accept' => 'application/json']);
 
         $response->assertStatus(200);
+        $this->assertEquals('New Awesome Category', $category->fresh()->title);
     }
 }

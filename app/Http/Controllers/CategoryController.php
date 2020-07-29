@@ -15,4 +15,10 @@ class CategoryController extends Controller
         $category = Category::create($data);
         return response()->json(['category' => $category], 201);
     }
+
+    public function update(Category $category)
+    {
+        $category->title = request('title');
+        $category->save();
+    }
 }
