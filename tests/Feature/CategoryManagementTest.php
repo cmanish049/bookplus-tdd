@@ -90,7 +90,6 @@ class CategoryManagementTest extends TestCase
 
         $response = $this->json('DELETE', '/api/category/'. $category->id);
         $response->assertNoContent()->assertSee(null);
-        $this->assertEquals('Awesome Title', $category->fresh()->title);
         $this->assertSoftDeleted($category);
     }
 
@@ -99,5 +98,11 @@ class CategoryManagementTest extends TestCase
     {
         $response = $this->json('GET', 'api/category/-1', ['Accept' => 'application/json']);
         $response->assertNotFound();
+    }
+
+    /** @test */
+    public function category_title_is_required()
+    {
+        $this->post('api/category', [])->assertSessionHasErrors('title');
     }
 }

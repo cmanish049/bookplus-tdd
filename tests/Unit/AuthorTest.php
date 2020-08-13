@@ -2,17 +2,19 @@
 
 namespace Tests\Unit;
 
-use PHPUnit\Framework\TestCase;
+use App\Author;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class AuthorTest extends TestCase
 {
-    /**
-     * A basic unit test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    use RefreshDatabase;
+
+    /** @test */
+    public function author_model_has_path()
     {
-        $this->assertTrue(true);
+        $author = factory(Author::class)->create();
+
+        $this->assertEquals('/api/authors/'. $author->id, $author->path());
     }
 }

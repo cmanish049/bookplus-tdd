@@ -2,7 +2,10 @@
 
 namespace Tests;
 
+use App\Category;
 use App\Http\Resources\CategoryResource;
+use App\Http\Resources\PublicationResource;
+use App\Publication;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
@@ -13,6 +16,14 @@ abstract class TestCase extends BaseTestCase
     {
         $data = factory("App\\$model")->create($attributes);
 
-        return new CategoryResource($data);
+        $resource = "App\\Http\\Resources\\" . $model. "Resource";
+
+        return new $resource($data);
+
+        // if ($data instanceof Category)
+        //     return new CategoryResource($data);
+        // if ($data instanceof Publication)
+        //     return new PublicationResource($data);
+
     }
 }

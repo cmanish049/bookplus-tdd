@@ -10,4 +10,9 @@ class Category extends Model
     use SoftDeletes;
 
     protected $fillable = ['title', 'slug'];
+
+    public function path()
+    {
+        return "/api/categories/{$this->id}";
+    }
 }

@@ -45,4 +45,14 @@ class CategoryTest extends TestCase
         $this->assertEquals(Str::slug($title. '_uppdated'), $category->slug);
         $this->assertCount(1, Category::all());
     }
+
+    /** @test */
+    public function category_has_path()
+    {
+        $this->withoutExceptionHandling();
+
+        $category = factory(Category::class)->create();
+
+        $this->assertEquals('/api/categories/'. $category->id, $category->path());
+    }
 }
