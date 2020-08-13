@@ -41,6 +41,7 @@ class AuthorManagementTest extends TestCase
     {
         $this->post('/api/authors', [])->assertSessionHasErrors('name');
     }
+
     /** @test */
     public function author_can_be_updated()
     {
