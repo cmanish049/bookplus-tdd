@@ -1,3 +1,3 @@
 ## About Bookplus
 
-Bookplus is the laravel project built using TDD aproach
+Bookplus is the book store online store laravel project built using TDD apsproach
