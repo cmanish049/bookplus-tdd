@@ -75,4 +75,18 @@ class AuthorManagementTest extends TestCase
 
         $this->assertCount(1, Author::all());
     }
+
+    /** @test */
+    public function author_can_be_deleted()
+    {
+        $this->withoutExceptionHandling();
+        $this->create('Author');
+
+        $author = Author::first();
+
+        $this->json('DELETE', $author->path())
+            ->assertNoContent()
+            ->assertSee(null);
+        $this->assertSoftDeleted($author);
+    }
 }

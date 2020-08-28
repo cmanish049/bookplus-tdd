@@ -3,9 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 class Author extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = ['name', 'author'];
 
     public static function booted()

@@ -4,7 +4,6 @@ use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PublicationController;
 use Illuminate\Support\Facades\Route;
-use PharIo\Manifest\Author;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -29,3 +28,4 @@ Route::delete('/publications/{publication}', [PublicationController::class, 'des
 
 Route::post('/authors', [AuthorController::class, 'store']);
 Route::put('/authors/{author}', [AuthorController::class, 'update']);
+Route::delete('/authors/{author}', [AuthorController::class, 'destroy']);

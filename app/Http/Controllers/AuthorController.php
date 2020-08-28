@@ -25,4 +25,10 @@ class AuthorController extends Controller
         $author->save();
         return response()->json(new AuthorResource($author), 200);
     }
+
+    public function destroy(Author $author)
+    {
+        $author->delete();
+        return response()->json(null, 204);
+    }
 }
